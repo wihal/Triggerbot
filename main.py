@@ -46,7 +46,7 @@ if __name__ == "__main__":
     trigger_key = args.triggerkey
     mouse_button = args.mousebutton
 
-    print("Triggerbot is running \n Made by willi")
+    print("Triggerbot is running \n Made by wihal")
     print("Settings:\n - trigger key = {}\n - mouse button = {}".format(trigger_key, mouse_button))
     
 with Listener(on_press=on_press,) as listener:
