@@ -1,7 +1,7 @@
 from pynput.keyboard import Listener
 import pyautogui
 from time import sleep
-from hashlib import sha256
+from hashlib import sha1
 from argparse import ArgumentParser
 
 def on_press(key):
@@ -16,15 +16,13 @@ def on_press(key):
             pyautogui.screenshot(region=(x, y, 10, 10)).save('screenshot.png')
             
             with open('screenshot.png', "rb") as f:
-                hash1 = sha256(f.read()).hexdigest()
+                hash1 = sha1(f.read(), usedforsecurity=False).hexdigest()
 
             while True:
-                position = pyautogui.position()
-                x = position[0]
-                y = position[1]
                 pyautogui.screenshot(region=(x, y, 10, 10)).save('new.png')
+                
                 with open('new.png', "rb") as f:
-                    hash2 = sha256(f.read()).hexdigest()
+                    hash2 = sha1(f.read(), usedforsecurity=False).hexdigest()
 
                 if hash1 != hash2:
                     pyautogui.mouseDown(button=mouse_button)
@@ -48,7 +46,7 @@ if __name__ == "__main__":
     trigger_key = args.triggerkey
     mouse_button = args.mousebutton
 
-    print("Triggerbot is running by willi")
+    print("Triggerbot is running \n Made by willi")
     print("Settings:\n - trigger key = {}\n - mouse button = {}".format(trigger_key, mouse_button))
     
 with Listener(on_press=on_press,) as listener:
