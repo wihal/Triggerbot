@@ -7,7 +7,7 @@ from argparse import ArgumentParser
 def on_press(key):
     try:
         if key.char == trigger_key:
-            print("✅ {} pressed".format(trigger_key), end="\r")
+            print(" {} pressed".format(trigger_key), end="\r")
             sleep(0.1)
 
             position = pyautogui.position()
